@@ -1,0 +1,23 @@
+version: "3"
+services:
+  # EXPRESS SERVER 
+  express-server:
+    build: .
+    ports: 
+      - "3000:3000"
+    env_file:
+      - ./.env
+    depends_on:
+      - mongodb
+
+  # MONGO DATABASE
+  mongodb:
+    image: mongo
+    env_file:
+      - ./.env
+    volumes:
+      - mongodb:/data/db
+
+# VOLUMES
+volumes: 
+  mongodb:
