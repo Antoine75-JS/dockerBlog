@@ -57,6 +57,7 @@ exports.getPostById = async (req, res, next) => {
 exports.createPost = async (req, res, next) => {
   try {
     const newPost = await Post.create(req.body);
+    console.log(newPost);
     if (newPost) {
       res.status(201).json({
         status: 'success',
@@ -72,7 +73,11 @@ exports.createPost = async (req, res, next) => {
     }
   } catch (err) {
     console.trace(err);
-    res.status(500).json({ message: err.message })
+    if (err.code === 11000) {
+      res.status(500).json({ message: 'Post must have a unique title' })
+    } else {
+      res.status(500).json({ message: err.message })
+    }
   }
   next();
 };

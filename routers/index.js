@@ -2,11 +2,11 @@
 const express = require('express');
 const router = express.Router();
 
-// Controllers
-const { dockerServer } = require('../controllers/pingController')
+// Routers
+const postRouter = require('./postRouter');
 
 // Routes
-router.get('/', dockerServer)
+router.use('/posts', postRouter);
 
 module.exports = router;
 
