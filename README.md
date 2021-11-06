@@ -32,7 +32,7 @@ Simple node express server running on a docker container with a mongo database r
 <kbd>docker-compose -f docker-compose.yml -f docker-compose.dev.yml down -v</kbd>
 
 ### Check if running
-<kbd>docker logs [server-container-name-1] (-f)</kbd>
+<kbd>docker logs dockerblog-express-server-1 (-f)</kbd>
 
 ### Connect to mongo database
-<kbd>docker exec -it [mongodb-container-name-1] mongo -u "username" -p "password"</kbd>
+<kbd>docker exec -it dockerblog-mongodb-1 mongo -u "blogusername" -p "blogpassword"</kbd>
