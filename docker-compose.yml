@@ -18,6 +18,10 @@ services:
     volumes:
       - mongodb:/data/db
 
+  # REDIS FOR AUTH
+  redis:
+      image: redis
+
 # VOLUMES
 volumes: 
   mongodb:
