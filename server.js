@@ -9,7 +9,13 @@ const redis = require('redis');
 const cors = require('cors');
 
 const routers = require('./routers');
-const { MONGO_IP, MONGO_PORT, REDIS_URL, REDIS_PORT, SESSION_SECRET } = require('./config/config');
+const {
+  MONGO_IP,
+  MONGO_PORT,
+  REDIS_URL,
+  REDIS_PORT,
+  SESSION_SECRET,
+} = require('./config/config');
 
 // Redis store for auth
 let RedisStore = require('connect-redis')(session);
@@ -44,6 +50,7 @@ app.use(session({
   secret: SESSION_SECRET,
   // TO REPARAM DEPENDING ON NEEDS
   cookie: {
+    // Set secure to true for https in prod
     secure: false,
     resave: false,
     saveUninitialized: false,
