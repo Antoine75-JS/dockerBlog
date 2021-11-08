@@ -2,6 +2,9 @@
 const express = require('express');
 const router = express.Router();
 
+// Check auth middleware
+const checkAuth = require('../middlewares/authMiddleware');
+
 // Controllers
 const {
   getAllPosts,
@@ -15,11 +18,11 @@ router.get('/', getAllPosts);
 
 router.get('/:id', getPostById);
 
-router.post('/', createPost);
+router.post('/', checkAuth, createPost);
 
-router.patch('/:id', updatePost);
+router.patch('/:id', checkAuth, updatePost);
 
-router.delete('/:id', deletePost);
+router.delete('/:id', checkAuth, deletePost);
 
 module.exports = router;
 
